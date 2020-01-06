@@ -125,6 +125,11 @@ int add(int a,int b){
   return a + b;
 }
 
+int test(){
+  var list = [1,2,3];
+  list.forEach();
+}
+
 
 void main(){
   testList();
