@@ -174,6 +174,34 @@ testClass() {
     ..brithday = "1995-06-05";
 }
 
+/**
+ * 10.条件控制及for循环 
+ */
+testCondition() {
+  var condition = true;
+  if (condition) {
+    condition;
+  } else {
+    condition;
+  }
+
+// var value = '1'
+
+// return value == null ? ‘1’ : ‘2’
+// return value ?? ‘1'
+
+  var collection = [0, 1, 2];
+  for (int i = 0; i < collection.length; ++i) {
+    print(collection[i]);
+  }
+
+  collection.forEach((v) => print(v));
+
+  for (var x in collection) {
+    print(x);
+  }
+}
+
 void main() {
   testParamsFunction();
 }
