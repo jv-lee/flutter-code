@@ -1,5 +1,5 @@
 //使用dart定义一个函数 调用
-printInt(int number){
+printInt(int number) {
   print('The number is $number.');
 }
 
@@ -7,7 +7,7 @@ printInt(int number){
  * 1.调用函数
  * 函数无返回值使用void修饰，也可以直接省略void
  */
-testFun(){
+testFun() {
   var number = 32;
   //调用函数
   printInt(number);
@@ -17,7 +17,7 @@ testFun(){
  * 2.定义变量的区别
  * 在dart语言中 变量类型可以写定，也可以使用var 来声明。使用var来声明变量，dart语言可以自动推导出变量的类型
  */
-testParams(){
+testParams() {
   int a = 10;
   var b = 10;
   double c = 1.2;
@@ -27,12 +27,12 @@ testParams(){
 /**
  * 3.字符串引用定义
  */
-testString(){
+testString() {
   var s1 = 'abcd';
   var s2 = "abcd";
   var s3 = "abcd'";
   var s4 = 'abcd\'';
-  var s5 = "ab"+"cd";
+  var s5 = "ab" + "cd";
   var s6 = "ab" "cd";
   var s7 = '''
   aaaaa
@@ -41,7 +41,7 @@ testString(){
   ''';
   var number1 = 12;
   var s8 = "this is append int = $number1";
-  var s9 = "this is append int ="+number1.toString();
+  var s9 = "this is append int =" + number1.toString();
 
   //常量
   const s10 = "const string";
@@ -50,8 +50,8 @@ testString(){
 /**
  * 4.List 
  */
-testList(){
-  var list = [1,2,3];
+testList() {
+  var list = [1, 2, 3];
   List list1 = new List(); // dart1 必须写new
   List list2 = List(); // dart2开始可以省略 new
 
@@ -73,25 +73,25 @@ testList(){
   list2.removeAt(0);
 
   //删除指定区域的元素
-  list2.removeRange(0,1);
+  list2.removeRange(0, 1);
 
   //下面这个方法是将列表List中的toString之后的字符串的长度等于3的元素全部删除
   list2.removeWhere((item) => item.toString().length == 3);
 
-  for(int i = 0;i<list2.length;i++){
+  for (int i = 0; i < list2.length; i++) {
     printInt(list2[i]);
   }
 
-  var list3 = [0,...list]; // [0,1,2,3];
-  var list4 = [0,...?list]; // 如果list为空则不赋值
+  var list3 = [0, ...list]; // [0,1,2,3];
+  var list4 = [0, ...?list]; // 如果list为空则不赋值
 
-  const list5 = [1,5,7]; // const常量 该list中的值不可在更改
+  const list5 = [1, 5, 7]; // const常量 该list中的值不可在更改
 }
 
 /**
  * 5.Set
  */
-testSet(){
+testSet() {
   var set1 = {'a'};
   var set2 = <int>{}; //不指定类型为 <dynamic>{};  单独使用{}为map
 
@@ -102,14 +102,14 @@ testSet(){
 /**
  * 6.Map
  */
-testMap(){
-  var map1 = {0:'a',1:'b'};
+testMap() {
+  var map1 = {0: 'a', 1: 'b'};
   var map2 = Map();
   map2[0] = 'a';
 
-  Map<int,String> map3 = Map(); //指定类型的map
+  Map<int, String> map3 = Map(); //指定类型的map
 
-  final map4 = const {0:'a',1:'b'};//无法修改的map
+  final map4 = const {0: 'a', 1: 'b'}; //无法修改的map
 }
 
 /**
@@ -121,16 +121,59 @@ testMap(){
  * 
  * 位置参数 - add(int a,int b,[int c = 0,int d = 0, int e = 0]) 位置参数必须按顺序传入
  */
-int add(int a,int b){
+int add(int a, int b) {
   return a + b;
 }
 
-int test(){
-  var list = [1,2,3];
-  list.forEach();
+printParams(int params) {
+  print("这是一个匿名函数 打印参数：$params");
 }
 
+/**
+ * 7.函数作为参数 / 箭头函数-只能有一行代码 / 匿名函数-多行
+ */
+testParamsFunction() {
+  var fun1 = (e) => print("这是一个匿名函数 打印参数:$e");
+  var fun2 = (int e) {
+    print("这是一个匿名函数 打印参数：$e");
+  };
+  var fun3 = printParams;
+  var list = [1, 2, 3, 4];
+  list.forEach(fun2);
+}
 
-void main(){
-  testList();
+/**
+ * 8.词法闭包
+ * 返回一个函数 作为返回值
+ */
+Function testParamsFunctionClose(int basicValue) {
+  return (int j) => basicValue + j;
+}
+
+testParamsFunctionClose2() {
+  var fun = testParamsFunctionClose(5);
+  var value = fun(4);
+  print('最终结果 :$value'); // 为9
+}
+
+class Person {
+  String name;
+  int age;
+  String brithday;
+}
+
+/**
+ * 9.级连运算符
+ * .. 返回对象本身 类似 build模式
+ */
+testClass() {
+  Person person = Person();
+  person
+    ..name = "jv.lee"
+    ..age = 25
+    ..brithday = "1995-06-05";
+}
+
+void main() {
+  testParamsFunction();
 }
