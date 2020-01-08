@@ -202,6 +202,21 @@ testCondition() {
   }
 }
 
+/**
+ * class 常量类 以及语法糖构造函数
+ */
+class Point {
+  final num x, y;
+  const Point(this.x, this.y);
+}
+
+testPoint() {
+  //a == b != c
+  var a = const Point(1, 2);
+  var b = const Point(1, 2);
+  var c = Point(1, 2);
+}
+
 void main() {
   testParamsFunction();
 }
