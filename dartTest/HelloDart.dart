@@ -203,7 +203,7 @@ testCondition() {
 }
 
 /**
- * class 常量类 以及语法糖构造函数
+ * 11.class 常量对象 以及语法糖构造函数
  */
 class Point {
   final num x, y;
@@ -215,6 +215,138 @@ testPoint() {
   var a = const Point(1, 2);
   var b = const Point(1, 2);
   var c = Point(1, 2);
+}
+
+/**
+ * 12.getter / setter
+ */
+class Rectangle {
+  num left, top, width, height;
+
+  Rectangle(this.left, this.top, this.width, this.height);
+
+  //定义两个计算生产值的属性： right 和 bottom
+  num get right => left + width;
+  set right(num value) => left = value - width;
+  num get bottom => top + height;
+  set bottom(num value) => top = value - height;
+}
+
+testRectangle() {
+  var rect = Rectangle(3, 4, 20, 15);
+  rect.right = 12;
+}
+
+/**
+ * 13.抽象类 - 抽象方法
+ */
+abstract class Doer {
+  //定义实例变量和方法等等
+
+  void doSomething(); //定义一个抽象方法
+}
+
+class EffectiveDoer extends Doer {
+  @override
+  void doSomething() {}
+}
+
+/**
+ * 14.接口类
+ */
+class PersonInterface {
+  //因为是final修饰 一旦赋值 其他实现接口类的 实现类 必然会使用第一次初始化的_name的值
+  final _name;
+  PersonInterface(this._name);
+  String greet(String who) => '你好 $who,我是 $_name';
+}
+
+class Impostor implements PersonInterface {
+  @override
+  get _name => '';
+
+  @override
+  String greet(String who) {
+    return '你好 $who,你知道我是谁吗？';
+  }
+}
+
+/**
+ * 15.类的继承
+ */
+class Television {
+  void turnOn() {
+    // _illuminateDisplay();
+  }
+}
+
+class SmartTelevision extends Television {
+  @override
+  void turnOn() {
+    super.turnOn();
+    // _bootNetworkInterface();
+    // _upgradeApps();
+  }
+}
+
+/**
+ * 16.mixin 机制   为类实现某些特定的功能 , 将特定的功能定义在mixin中 通过 with 关键字引用 
+ */
+abstract class Animal {}
+
+abstract class Bird extends Animal {}
+
+mixin Walker {
+  void walk() {
+    print("i'm walking");
+  }
+}
+
+mixin Fly {
+  void fly() {
+    print("i'm flying");
+  }
+}
+
+class Parrot extends Bird with Walker, Fly {}
+
+testMixin() {
+  var parrot = Parrot();
+  parrot.walk();
+  parrot.fly();
+}
+
+/**
+ * 17.泛型
+ */
+abstract class Cache<T> {
+  T getByKey(String key);
+  void setByKey(String key, T value);
+}
+
+/**
+ * 18.使用集合字面量
+ */
+testTvalue() {
+  var names = <String>['A', 'B', 'C'];
+  var uniqueNames = <String>{'A', 'B', 'C'};
+  var pages = <String, String>{'A': '页面A'};
+
+  var nameSet = Set<String>.from(names);
+  var views = Map<int, Object>(); //Object -> View
+}
+
+/**
+ * 19.限定泛型类型范围
+ * class Button<T extends View>{}
+ */
+
+/**
+ * 泛型方法
+ */
+T first<T>(List<T> list) {
+  T temp = list[0];
+  return temp;
 }
 
 void main() {
