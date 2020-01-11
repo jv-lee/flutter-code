@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+/**
+ * 线性布局 列 纵向
+ */
 class SimpleColumn extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {

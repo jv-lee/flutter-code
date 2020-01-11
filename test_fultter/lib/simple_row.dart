@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+/**
+ * 线性布局 行 横向
+ */
 class SimpleRow extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {

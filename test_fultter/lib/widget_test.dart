@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+/**
+ * 基础控件
+ */
 class WidgetTest extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
