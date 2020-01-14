@@ -1,5 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:test_fultter/animator/hero_first.dart';
+import 'package:test_fultter/animator/scale_anim.dart';
+import 'package:test_fultter/animator/stagger_anim.dart';
+import 'package:test_fultter/pointevent/gesture.dart';
+import 'package:test_fultter/pointevent/point.dart';
 
 class FirstRoute extends StatelessWidget {
   @override
@@ -115,12 +121,79 @@ class FirstRoute extends StatelessWidget {
                     Navigator.pushNamed(context, '/anim_builder');
                   },
                 ),
+              ],
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
                 RaisedButton(
                   child: Text('simple_scale_anim'),
                   onPressed: () {
-                    Navigator.pushNamed(context, '/simple_scale_anim');
+                    // Navigator.pushNamed(context, '/simple_scale_anim');
+                    Navigator.push(context, PageRouteBuilder(
+                        pageBuilder: (context, animation, sAnimation) {
+                      return FadeTransition(
+                        opacity: animation,
+                        child: SimpleScaleAnim(),
+                      );
+                    }));
                   },
                 ),
+                RaisedButton(
+                  child: Text('sync_anim'),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/sync_anim');
+                  },
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                RaisedButton(
+                  child: Text('hero anim'),
+                  onPressed: () {
+                    Navigator.push(context,
+                        CupertinoPageRoute(builder: (context) => HeroFirst()));
+                  },
+                )
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                RaisedButton(
+                  child: Text('stagger anim'),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => StaggerPage()));
+                  },
+                )
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                RaisedButton(
+                  child: Text('point event'),
+                  onPressed: () {
+                    Navigator.push(context,
+                        CupertinoPageRoute(builder: (context) => PointEvent()));
+                  },
+                ),
+                RaisedButton(
+                  child: Text('gesture event'),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => GestureEvent()));
+                  },
+                )
               ],
             )
           ],

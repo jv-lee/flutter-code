@@ -1,8 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:test_fultter/animator/anim_builder.dart';
 import 'package:test_fultter/animator/anim_widget.dart';
 import 'package:test_fultter/animator/basic_anim.dart';
 import 'package:test_fultter/animator/scale_anim.dart';
+import 'package:test_fultter/animator/sync_anim.dart';
 import 'package:test_fultter/router/simple_router.dart';
 
 void main() => runApp(MyApp());
@@ -11,7 +13,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: ThemeData(
+          accentColor: Colors.white,
+          canvasColor: Colors.white,
+          backgroundColor: Colors.blue,
+          primaryColor: Colors.white,
+          pageTransitionsTheme: PageTransitionsTheme(
+              builders: <TargetPlatform, PageTransitionsBuilder>{
+                TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+                TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+                TargetPlatform.fuchsia: CupertinoPageTransitionsBuilder()
+              })),
+      // theme: ThemeData(primarySwatch: Colors.blue),
       // home: NewPage(),
       // home: WidgetTest(),
       // home: SimpleRow(),
@@ -36,6 +49,7 @@ class MyApp extends StatelessWidget {
         '/simple_anim': (context) => SimpleAnimation(),
         '/anim_builder': (context) => AnimBuilder(),
         '/simple_scale_anim': (context) => SimpleScaleAnim(),
+        '/sync_anim': (context) => SyncAnim(),
       },
     );
   }
