@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:test_fultter/animator/hero_first.dart';
 import 'package:test_fultter/animator/scale_anim.dart';
 import 'package:test_fultter/animator/stagger_anim.dart';
+import 'package:test_fultter/channel/battery_test.dart';
 import 'package:test_fultter/pointevent/gesture.dart';
 import 'package:test_fultter/pointevent/point.dart';
 
@@ -194,6 +195,20 @@ class FirstRoute extends StatelessWidget {
                             builder: (context) => GestureEvent()));
                   },
                 )
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                RaisedButton(
+                  child: Text('channel battery'),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => BatteryTest()));
+                  },
+                ),
               ],
             )
           ],

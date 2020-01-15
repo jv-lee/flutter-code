@@ -10,6 +10,14 @@ class GestureEvent extends StatefulWidget {
 }
 
 class GestureState extends State<GestureEvent> {
+  TapGestureRecognizer recognizer = TapGestureRecognizer();
+
+  @override
+  void dispose() {
+    recognizer.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,7 +103,7 @@ class GestureState extends State<GestureEvent> {
         TextSpan(
             text: 'www.163.com',
             style: TextStyle(color: Colors.blue),
-            recognizer: TapGestureRecognizer()
+            recognizer: recognizer
               ..onTap = () {
                 Fluttertoast.showToast(msg: 'click');
               })
