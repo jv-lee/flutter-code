@@ -7,6 +7,7 @@ import 'package:test_fultter/animator/stagger_anim.dart';
 import 'package:test_fultter/channel/battery_test.dart';
 import 'package:test_fultter/pointevent/gesture.dart';
 import 'package:test_fultter/pointevent/point.dart';
+import 'package:test_fultter/storage/shared_preferences.dart';
 
 class FirstRoute extends StatelessWidget {
   @override
@@ -207,6 +208,18 @@ class FirstRoute extends StatelessWidget {
                         context,
                         CupertinoPageRoute(
                             builder: (context) => BatteryTest()));
+                  },
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                RaisedButton(
+                  child: Text('shared preferences'),
+                  onPressed: () {
+                    Navigator.push(context,
+                        CupertinoPageRoute(builder: (context) => SharedPage()));
                   },
                 ),
               ],
