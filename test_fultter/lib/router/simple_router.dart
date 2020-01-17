@@ -5,6 +5,11 @@ import 'package:test_fultter/animator/hero_first.dart';
 import 'package:test_fultter/animator/scale_anim.dart';
 import 'package:test_fultter/animator/stagger_anim.dart';
 import 'package:test_fultter/channel/battery_test.dart';
+import 'package:test_fultter/network/dio_package.dart';
+import 'package:test_fultter/network/http_client.dart';
+import 'package:test_fultter/network/http_package.dart';
+import 'package:test_fultter/network/json_test.dart';
+import 'package:test_fultter/network/websocket.dart';
 import 'package:test_fultter/pointevent/gesture.dart';
 import 'package:test_fultter/pointevent/point.dart';
 import 'package:test_fultter/storage/shared_preferences.dart';
@@ -223,7 +228,59 @@ class FirstRoute extends StatelessWidget {
                   },
                 ),
               ],
-            )
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                RaisedButton(
+                  child: Text('http client'),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => HttpClientPage()));
+                  },
+                ),
+                RaisedButton(
+                  child: Text('http pkg'),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => HttpPackagePage()));
+                  },
+                ),
+                RaisedButton(
+                  child: Text('dio pkg'),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => DioPackagePage()));
+                  },
+                ),
+                RaisedButton(
+                  child: Text('json img'),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => JsonTestPage()));
+                  },
+                ),
+              ],
+            ),
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              RaisedButton(
+                child: Text('websocket'),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                          builder: (context) => WebSocketPage()));
+                },
+              ),
+            ]),
           ],
         ));
   }
