@@ -20,23 +20,23 @@ import com.netease.nrtc.sdk.NRtcCallback as NRtcCallback1
  * @date 2020-01-18
  * @description
  */
-class NrtcOldPlugin  : MethodChannel.MethodCallHandler, NRtcCallback1 {
+class NrtcOldPlugin : MethodChannel.MethodCallHandler, NRtcCallback1 {
 
 
     private var context: Context? = null
     private var channel: MethodChannel? = null
     private var nrtc: NRtc? = null
 
-    private fun init(context:Context,channel: MethodChannel){
+    private fun init(context: Context, channel: MethodChannel) {
         this.context = context
         this.channel = channel
     }
 
-    fun withRegister(register:PluginRegistry){
+    fun withRegister(register: PluginRegistry) {
         val registrarFor = register.registrarFor("nrtc")
-        val channel = MethodChannel(registrarFor.messenger(),"nrtc")
+        val channel = MethodChannel(registrarFor.messenger(), "nrtc")
         channel.setMethodCallHandler(this)
-        init(registrarFor.context().applicationContext,channel)
+        init(registrarFor.context().applicationContext, channel)
     }
 
     override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
@@ -46,12 +46,22 @@ class NrtcOldPlugin  : MethodChannel.MethodCallHandler, NRtcCallback1 {
         } else if (call.method == "dispose") {
             nrtc?.dispose()
             nrtc = null
+        } else if (call.method == "joinChannel") {
+            val token = call.argument<String>("token")
+            val channelName = call.argument<String>("channelName")
+            val uid = call.argument<Number>("uid")
+            val ret = nrtc?.joinChannel(token, channelName, uid?.toLong()!!)
+            result.success(ret)
+        } else if (call.method == "leaveChannel") {
+            val ret = nrtc?.leaveChannel()
+            result.success(ret)
         } else {
             result.notImplemented()
         }
     }
 
     override fun onUnsubscribeAudioResult(p0: Int) {
+
     }
 
     override fun onUnpublishVideoResult(p0: Int) {
@@ -64,6 +74,12 @@ class NrtcOldPlugin  : MethodChannel.MethodCallHandler, NRtcCallback1 {
     }
 
     override fun onJoinedChannel(p0: Long, p1: String?, p2: String?, p3: Int) {
+        val params = HashMap<String, Any>()
+        params["channelId"] = p0
+        params["videoFile"] = p1 as Any
+        params["audioFile"] = p2 as Any
+        params["elapsed"] = p3
+        channel?.invokeMethod("onJoinedChannel", params)
     }
 
     override fun onReportSpeaker(p0: Int, p1: LongArray?, p2: IntArray?, p3: Int) {
@@ -97,6 +113,9 @@ class NrtcOldPlugin  : MethodChannel.MethodCallHandler, NRtcCallback1 {
     }
 
     override fun onUserJoined(p0: Long) {
+        val params = HashMap<String, Any>()
+        params["uid"] = p0
+        channel?.invokeMethod("onUserJoined", params)
     }
 
     override fun onAudioFrameFilter(p0: AudioFrame?): Boolean {
@@ -124,6 +143,7 @@ class NrtcOldPlugin  : MethodChannel.MethodCallHandler, NRtcCallback1 {
     }
 
     override fun onLeftChannel(p0: SessionStats?) {
+        channel?.invokeMethod("onLeftChannel", null)
     }
 
     override fun onUnsubscribeVideoResult(p0: Long, p1: Int, p2: Int) {
