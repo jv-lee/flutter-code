@@ -13,6 +13,7 @@ import 'package:test_fultter/network/websocket.dart';
 import 'package:test_fultter/pointevent/gesture.dart';
 import 'package:test_fultter/pointevent/point.dart';
 import 'package:test_fultter/storage/shared_preferences.dart';
+import 'package:test_fultter/widget/widget_list.dart';
 
 class FirstRoute extends StatelessWidget {
   @override
@@ -24,6 +25,17 @@ class FirstRoute extends StatelessWidget {
         body: Flex(
           direction: Axis.vertical,
           children: <Widget>[
+            Column(
+              children: <Widget>[
+                RaisedButton(
+                  child: Text('widget - list'),
+                  onPressed: () {
+                    Navigator.push(context,
+                        CupertinoPageRoute(builder: (context) => WidgetList()));
+                  },
+                )
+              ],
+            ),
             Flex(
               mainAxisSize: MainAxisSize.min,
               direction: Axis.horizontal,

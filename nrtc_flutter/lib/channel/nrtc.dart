@@ -1,13 +1,15 @@
 import 'package:flutter/services.dart';
 
-class NrtcEngine {
+class NrtcEngine implements MethodCall {
   static const MethodChannel _channel = const MethodChannel('nrtc');
 
   factory NrtcEngine() => _instance;
 
   static final NrtcEngine _instance = NrtcEngine._();
 
-  NrtcEngine._();
+  NrtcEngine._() {
+    _channel.setMethodCallHandler(this);
+  }
 
   /**
    * 创建nrtc sdk 资源
@@ -48,4 +50,10 @@ class NrtcEngine {
   Future<int> leaveChannel() async {
     return await _channel.invokeMethod('leaveChannel');
   }
+
+  @override
+  get arguments => null;
+
+  @override
+  String get method => null;
 }
