@@ -35,7 +35,9 @@ class ScaffoldState extends State<ScaffoldPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ScaffoldPage'),
+        title: Text(
+          'ScaffoldPage',
+        ),
         actions: <Widget>[
           IconButton(
               icon: Icon(Icons.share),

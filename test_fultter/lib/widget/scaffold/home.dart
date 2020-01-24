@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -12,14 +11,20 @@ class HomeState extends State<Home> with SingleTickerProviderStateMixin {
   TabController _tabController;
   PageController _pageController = PageController(initialPage: 0);
   List tabs = ["新闻", "历史", "图片"];
-  var currentPage = 0;
+  //控制单项选择page / tab/page 分离控制
+  var isPageMove = false;
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: tabs.length, vsync: this);
     _tabController.addListener(() {
-      _pageController.jumpToPage(_tabController.index);
+      if (isPageMove) {
+        _tabController.animateTo(_tabController.index);
+        isPageMove = false;
+      } else {
+        _pageController.jumpToPage(_tabController.index);
+      }
     });
   }
 
@@ -50,6 +55,7 @@ class HomeState extends State<Home> with SingleTickerProviderStateMixin {
               return Text(tabs[index]);
             },
             onPageChanged: (index) {
+              isPageMove = true;
               _tabController.animateTo(index);
             },
           ),
