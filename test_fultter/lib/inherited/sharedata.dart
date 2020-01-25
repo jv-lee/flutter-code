@@ -17,14 +17,14 @@ class ShareDataWidget extends InheritedWidget {
   }
 }
 
-class _TestShareWidget extends StatefulWidget {
+class TestShareWidget extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return _TestShareState();
   }
 }
 
-class _TestShareState extends State<_TestShareWidget> {
+class _TestShareState extends State<TestShareWidget> {
   @override
   Widget build(BuildContext context) {
     return Text(ShareDataWidget.of(context).data.toString());

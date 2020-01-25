@@ -5,6 +5,7 @@ import 'package:test_fultter/animator/hero_first.dart';
 import 'package:test_fultter/animator/scale_anim.dart';
 import 'package:test_fultter/animator/stagger_anim.dart';
 import 'package:test_fultter/channel/battery_test.dart';
+import 'package:test_fultter/eventbus/is_login.dart';
 import 'package:test_fultter/network/dio_package.dart';
 import 'package:test_fultter/network/http_client.dart';
 import 'package:test_fultter/network/http_package.dart';
@@ -290,6 +291,15 @@ class FirstRoute extends StatelessWidget {
                       context,
                       CupertinoPageRoute(
                           builder: (context) => WebSocketPage()));
+                },
+              ),
+            ]),
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              RaisedButton(
+                child: Text('eventbus'),
+                onPressed: () {
+                  Navigator.push(context,
+                      CupertinoPageRoute(builder: (context) => IsLoginPage()));
                 },
               ),
             ]),
