@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 
 import 'const.dart';
 
@@ -14,7 +14,7 @@ class HttpPackagePage extends StatefulWidget {
 
 class HttpPackageState extends State<HttpPackagePage> {
   Future<String> _fetch() async {
-    var response = await http.get(Constants.todosURL);
+    var response = await get(Constants.todosURL);
     return response.statusCode == HttpStatus.ok
         ? response.body.toString()
         : throw Exception('request http error');

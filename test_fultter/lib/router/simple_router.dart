@@ -14,6 +14,7 @@ import 'package:test_fultter/network/websocket.dart';
 import 'package:test_fultter/pointevent/gesture.dart';
 import 'package:test_fultter/pointevent/point.dart';
 import 'package:test_fultter/storage/shared_preferences.dart';
+import 'package:test_fultter/video/video.dart';
 import 'package:test_fultter/widget/widget_list.dart';
 
 class FirstRoute extends StatelessWidget {
@@ -300,6 +301,15 @@ class FirstRoute extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(context,
                       CupertinoPageRoute(builder: (context) => IsLoginPage()));
+                },
+              ),
+            ]),
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              RaisedButton(
+                child: Text('video'),
+                onPressed: () {
+                  Navigator.push(context,
+                      CupertinoPageRoute(builder: (context) => VideoPage()));
                 },
               ),
             ]),

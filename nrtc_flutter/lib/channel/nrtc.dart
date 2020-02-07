@@ -8,7 +8,7 @@ class NrtcEngine implements MethodCall {
   static final NrtcEngine _instance = NrtcEngine._();
 
   NrtcEngine._() {
-    _channel.setMethodCallHandler(this);
+    // _channel.setMethodCallHandler(this);
   }
 
   /**
