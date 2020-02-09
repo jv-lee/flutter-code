@@ -57,13 +57,13 @@ class TestFlowDelegate extends FlowDelegate {
     for (int i = 0; i < context.childCount; i++) {
       var w = context.getChildSize(i).width + x + margin.right;
       if (w < context.size.width) {
-        context.paintChild(i, transform: Matrix4Tween(begin: x, end: y));
+        context.paintChild(i);
         x = w + margin.left;
       } else {
         x = margin.left;
         y += context.getChildSize(i).height + margin.top + margin.bottom;
         //绘制子widget(有优化)
-        context.paintChild(i, transform: Matrix4Tween(begin: x, end: y));
+        context.paintChild(i);
         x += context.getChildSize(i).width + margin.left + margin.right;
       }
     }

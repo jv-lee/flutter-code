@@ -14,7 +14,7 @@ description: A new Flutter project.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.2.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -23,7 +23,8 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
-
+  fluttertoast: ^3.1.3
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -48,6 +49,39 @@ flutter:
    - assets/images/ic_splash_logo.png
    - assets/images/2.0x/ic_splash_logo.png
    - assets/images/3.0x/ic_splash_logo.png
+   - assets/images/ic_menu_about_us.png
+   - assets/images/2.0x/ic_menu_about_us.png
+   - assets/images/3.0x/ic_menu_about_us.png
+   - assets/images/ic_menu_contact_us.png
+   - assets/images/2.0x/ic_menu_contact_us.png
+   - assets/images/3.0x/ic_menu_contact_us.png
+   - assets/images/ic_menu_update_password.png
+   - assets/images/2.0x/ic_menu_update_password.png
+   - assets/images/3.0x/ic_menu_update_password.png
+   - assets/images/ic_menu_update_version.png
+   - assets/images/2.0x/ic_menu_update_version.png
+   - assets/images/3.0x/ic_menu_update_version.png
+   - assets/images/avatar01.png
+   - assets/images/2.0x/avatar01.png
+   - assets/images/3.0x/avatar01.png
+   - assets/images/avatar02.png
+   - assets/images/2.0x/avatar02.png
+   - assets/images/3.0x/avatar02.png
+   - assets/images/avatar03.png
+   - assets/images/2.0x/avatar03.png
+   - assets/images/3.0x/avatar03.png
+   - assets/images/avatar04.png
+   - assets/images/2.0x/avatar04.png
+   - assets/images/3.0x/avatar04.png
+   - assets/images/avatar05.png
+   - assets/images/2.0x/avatar05.png
+   - assets/images/3.0x/avatar05.png
+   - assets/images/avatar06.png
+   - assets/images/2.0x/avatar06.png
+   - assets/images/3.0x/avatar06.png
+   - assets/images/avatar07.png
+   - assets/images/2.0x/avatar07.png
+   - assets/images/3.0x/avatar07.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
