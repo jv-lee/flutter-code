@@ -1,7 +1,11 @@
+//接口回调
 typedef void EventCallback(arg);
 
+//定义一个top-level（全局）变量，页面引入该文件后可以直接使用bus
+var bus = EventBus();
+
 /**
- *   
+ *   使用方法
     bus.on('注册', (arg) {
       text = arg;
       setState(() {});
@@ -51,6 +55,3 @@ class EventBus {
     }
   }
 }
-
-//定义一个top-level（全局）变量，页面引入该文件后可以直接使用bus
-var bus = EventBus();

@@ -58,7 +58,7 @@ class HomeState extends State<HomeRoute> {
           BottomNavigationBarItem(
               icon: Icon(Icons.home), title: Text('Recommend')),
           BottomNavigationBarItem(
-              icon: Icon(Icons.compare), title: Text('Complete')),
+              icon: Icon(Icons.copyright), title: Text('Complete')),
         ],
         currentIndex: _selectIndex,
         onTap: _onItemSelect,

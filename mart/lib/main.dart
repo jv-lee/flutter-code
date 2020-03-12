@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mart/routes/splash.dart';
+import 'package:mart/server/server.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,6 +15,9 @@ void main() {
         statusBarIconBrightness: Brightness.dark);
     SystemChrome.setSystemUIOverlayStyle(style);
   }
+
+  //初始化服务器组件
+  server.init();
 }
 
 class MyApp extends StatelessWidget {
